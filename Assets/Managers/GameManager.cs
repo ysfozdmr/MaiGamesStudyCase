@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Coskunerov.EventBehaviour;
-using Coskunerov.Actors;
+using Fenrir.Actors;
+using Fenrir.EventBehaviour;
 
-namespace Coskunerov.Managers
+namespace Fenrir.Managers
 {
     [RequireComponent(typeof(DataManager))]
     public class GameManager : EventBehaviour<GameManager>

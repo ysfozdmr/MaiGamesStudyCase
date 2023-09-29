@@ -1,15 +1,10 @@
-﻿/*
- * Author Mustafa COSKUNER
- * 
- * Coskunersoft@outlook.com
- */
-
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace Coskunerov.EventBehaviour.Attributes
+namespace Fenrir.EventBehaviour.Attributes
 {
     [AttributeUsage(AttributeTargets.Method)]
     public class GE : Attribute

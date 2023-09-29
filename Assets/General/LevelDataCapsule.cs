@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Coskunerov.Resources
+namespace Fenrir.Resources
 {
 
-    [CreateAssetMenu(fileName = "Level Capsule", menuName = "Coskunerov/Level Data Capsule")]
+    [CreateAssetMenu(fileName = "Level Capsule", menuName = "Fenrir/Level Data Capsule")]
     public class LevelDataCapsule : ScriptableObject
     {
         public List<LevelData> Levels;

@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Coskunerov.EventBehaviour;
+using Fenrir.EventBehaviour;
 
-namespace Coskunerov.Actors
+namespace Fenrir.Actors
 {
     public abstract class GameActor<T2> : Actor where T2 : EventBehaviour<T2>
     {

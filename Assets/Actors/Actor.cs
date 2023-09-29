@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Coskunerov.Actors
+namespace Fenrir.Actors
 {
     public abstract class Actor : MonoBehaviour
     {

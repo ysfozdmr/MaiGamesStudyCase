@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Coskunerov.Actors;
-using Coskunerov.Managers;
-using Coskunerov.EventBehaviour;
-using Coskunerov.EventBehaviour.Attributes;
+using Fenrir.Actors;
+using Fenrir.Managers;
+using Fenrir.EventBehaviour;
+using Fenrir.EventBehaviour.Attributes;
 
-namespace Coskunerov.Actors
+namespace Fenrir.Actors
 {
     public partial class LevelActor : GameSingleActor<LevelActor>
     {

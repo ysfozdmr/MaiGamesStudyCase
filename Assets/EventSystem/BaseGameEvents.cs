@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Coskunerov.EventBehaviour
+namespace Fenrir.EventBehaviour
 {
     public abstract partial class BaseGameEvents
     {

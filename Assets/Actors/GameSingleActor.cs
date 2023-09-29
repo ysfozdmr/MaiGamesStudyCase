@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Coskunerov.Managers;
+using Fenrir.Managers;
 
-namespace Coskunerov.Actors
+namespace Fenrir.Actors
 {
     public class GameSingleActor<T> : GameActor<GameManager> where T : MonoBehaviour
     {

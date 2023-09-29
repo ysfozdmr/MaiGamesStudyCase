@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Coskunerov.EventBehaviour;
-using Coskunerov.Resources;
+using Fenrir.EventBehaviour;
+using Fenrir.Resources;
 
-namespace Coskunerov.Managers
+namespace Fenrir.Managers
 {
     public class DataManager : EventBehaviour<DataManager>
     {
-        public FXData fXData;
         public LevelDataCapsule levelCapsule;
     }
 }

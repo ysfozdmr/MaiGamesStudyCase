@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Coskunerov.Actors;
+using Fenrir.Actors;
 
 
-namespace Coskunerov.Resources
+namespace Fenrir.Resources
 {
-    [CreateAssetMenu(fileName = "Level Data", menuName = "Coskunerov/Level Data")]
+    [CreateAssetMenu(fileName = "Level Data", menuName = "Fenrir/Level Data")]
     public class LevelData : ScriptableObject
     {
         public LevelActor LevelPrefab;
