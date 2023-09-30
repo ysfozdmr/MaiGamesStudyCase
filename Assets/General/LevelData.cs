@@ -10,6 +10,7 @@ namespace Fenrir.Resources
     public class LevelData : ScriptableObject
     {
         public LevelActor LevelPrefab;
+
     }
     
 }

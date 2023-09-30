@@ -9,5 +9,8 @@ namespace Fenrir.Managers
     public class DataManager : EventBehaviour<DataManager>
     {
         public LevelDataCapsule levelCapsule;
+        public GameConfiguration GameConfiguration;
+        public List<GameObject> PlayersBalls = new List<GameObject>();
+        
     }
 }

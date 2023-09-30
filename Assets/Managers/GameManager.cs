@@ -33,7 +33,9 @@ namespace Fenrir.Managers
             {
                 runtime.currentLevel = levelActor;
                 levelActor.SetupLevel();
+                runtime.isGameOver = false;
                 PushEvent(BaseGameEvents.LevelLoaded);
+                
             }
         }
 
@@ -50,7 +52,7 @@ namespace Fenrir.Managers
             }
         }
         public void FinishLevel(bool status)
-        {
+        { 
             runtime.isGameStarted = false;
             runtime.isGameOver = true;
             PushEvent(BaseGameEvents.FinishGame);

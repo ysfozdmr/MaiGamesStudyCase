@@ -8,7 +8,6 @@ using UnityEngine;
 
 public class CustomLevelActor : LevelActor
 {
-
     public override void SetupLevel()
     {
 
