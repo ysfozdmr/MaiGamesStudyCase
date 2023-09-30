@@ -31,7 +31,8 @@ public class DoorController : GameActor<GameManager>
         {
             foreach (GameObject ball in DoorBalls)
             {
-                Destroy(ball);
+                DataManager.Instance.PlayersBalls.Remove(ball);
+                ball.transform.localScale=Vector3.zero;
             }
 
             CounterText.SetActive(false);
