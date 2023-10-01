@@ -5,7 +5,6 @@ using UnityEngine;
 using Fenrir.Actors;
 using Fenrir.Managers;
 using DG.Tweening;
-using Fenrir.EventBehaviour;
 using TMPro;
 
 
@@ -16,10 +15,12 @@ public class DoorController : GameActor<GameManager>
     public GameObject CounterText;
     public List<GameObject> DoorBalls = new List<GameObject>();
     private bool ballPushing;
+    [SerializeField] private GameObject wall;
 
     public override void ActorAwake()
     {
         CounterText.GetComponent<TextMeshPro>().text = "0/" + DoorPassageCounter;
+
     }
 
     IEnumerator OpenDoor()
@@ -29,10 +30,11 @@ public class DoorController : GameActor<GameManager>
         yield return new WaitForSeconds(2f);
         if (ballCounter >= DoorPassageCounter)
         {
+            wall.SetActive(false);
             foreach (GameObject ball in DoorBalls)
             {
                 DataManager.Instance.PlayersBalls.Remove(ball);
-                ball.transform.localScale=Vector3.zero;
+                ball.transform.localScale = Vector3.zero;
             }
 
             CounterText.SetActive(false);
@@ -48,13 +50,14 @@ public class DoorController : GameActor<GameManager>
     void CountinuePlayer()
     {
         GameManager.Instance.PushEvent(Constants.COUTINUEPLAYEREVENT);
+        GameManager.Instance.PushEvent(Constants.DESTROYBALLEVENT);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            if (DataManager.Instance.PlayersBalls.Count <= 0&& !ballPushing)
+            if (DataManager.Instance.PlayersBalls.Count <= 0 && !ballPushing)
             {
                 GameManager.Instance.FinishLevel(false);
             }

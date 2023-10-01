@@ -28,6 +28,7 @@ namespace Fenrir.Managers
             {
                 Destroy(runtime.currentLevel.gameObject);
             }
+            
             GameObject createdLevel = Instantiate(DataManager.Instance.levelCapsule.LevelPrefab(runtime.currentLevelIndex));
             if (createdLevel.TryGetComponent(out LevelActor levelActor))
             {
@@ -55,6 +56,8 @@ namespace Fenrir.Managers
         { 
             runtime.isGameStarted = false;
             runtime.isGameOver = true;
+            DataManager.Instance.PlayersBalls.Clear();
+            PushEvent(Constants.DESTROYBALLEVENT);
             PushEvent(BaseGameEvents.FinishGame);
             PushEvent(status ? BaseGameEvents.WinGame : BaseGameEvents.LoseGame);
 

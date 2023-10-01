@@ -13,7 +13,13 @@ MonoBehaviour:
   m_Name: Level Capsule
   m_EditorClassIdentifier: 
   Levels:
+  - {fileID: 11400000, guid: c21c906c8fa278949a36ee3fb25696e1, type: 2}
   - {fileID: 11400000, guid: c0f015d374136b44d8cd54ec4bc5cf44, type: 2}
+  - {fileID: 11400000, guid: ae932ba5b275ea64a9b1862c41b0684c, type: 2}
   - {fileID: 11400000, guid: 17c45c3310b4f4244b862b00cc22f7e0, type: 2}
   - {fileID: 11400000, guid: 78890cc0c6776d142a6af3db60e1edff, type: 2}
   - {fileID: 11400000, guid: 8b394a05421fd474eb5138ba5d2b8580, type: 2}
+  - {fileID: 11400000, guid: 5f6c5595bdee3cd4b9246db71961cd14, type: 2}
+  - {fileID: 11400000, guid: ba7f7c74be1c026468eda989c4509d32, type: 2}
+  - {fileID: 11400000, guid: 7a6b3d6539d47bd439bc083550a67e75, type: 2}
+  - {fileID: 11400000, guid: 1a94445566758b74981940cefb9d735c, type: 2}

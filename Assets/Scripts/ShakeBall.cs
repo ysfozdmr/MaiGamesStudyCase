@@ -3,36 +3,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Fenrir.Actors;
+using Fenrir.EventBehaviour.Attributes;
+using Fenrir.Managers;
 
-public class ShakeBall : MonoBehaviour
+public class ShakeBall : GameActor<GameManager>
 {
-    [SerializeField] private List<GameObject> shakingBalls = new List<GameObject>();
+    [SerializeField] private GameObject ballPrefab;
+    public GameObject CenterPoint; // Nesnenin etrafında döneceği merkezi nokta
+    public float TurnSpeed = 45f;
+    public List<GameObject> CreatedBalls;
+
+    private void Update()
+    {
+        if (GameManager.Instance.runtime.isGameStarted)
+        {
+            transform.RotateAround(CenterPoint.transform.position, Vector3.up, TurnSpeed * Time.deltaTime);
+        }
+    }
+
+    void CreateBalls()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            GameObject go;
+            Vector3 pos = new Vector3(transform.position.x - (i / 2), transform.position.y, transform.position.z);
+            go = Instantiate(ballPrefab, pos, Quaternion.identity);
+            CreatedBalls.Add(go);
+            go.transform.parent = transform.parent;
+        }
+
+        gameObject.transform.localScale = Vector3.zero;
+    }
+
+    [GE(Constants.DESTROYBALLEVENT)]
+    private void DestroyBalls()
+    {
+        foreach (GameObject ball in CreatedBalls)
+        {
+            Debug.Log("calisti");
+            ball.SetActive(false);
+            CreatedBalls.Remove(ball);
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            StartCoroutine(ShakingNum());
-        }
-    }
-
-    void FinishShaking(int i)
-    {
-        for (int j = 0; j < shakingBalls[i].transform.childCount; j++)
-        {
-            shakingBalls[i].transform.GetChild(j).parent = null;
-            shakingBalls[i].transform.GetChild(j).GetComponent<Rigidbody>().isKinematic = false;
-        }
-        shakingBalls[i].SetActive(false);
-    }
-    IEnumerator ShakingNum()
-    {
-        for (int i = 0; i < shakingBalls.Count; i++)
-        {
-            Debug.Log("girdi");
-            yield return new WaitForSeconds(0.1f);
-            shakingBalls[i].gameObject.transform.DOShakePosition(0.3f, new Vector3(0.5f, 0.5f, 0.5f), 10, 90f,false)
-                .OnComplete(() => FinishShaking(i));;
+            CreateBalls();
         }
     }
 }
