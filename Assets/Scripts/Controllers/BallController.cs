@@ -15,7 +15,6 @@ public class BallController : GameActor<GameManager>
     }
     public void BallForceEvent()
     {
-        //collider yerleştir
         rb.AddForce(new Vector3(0,0,20));
     }
     

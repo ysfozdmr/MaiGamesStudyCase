@@ -2,16 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 using Fenrir.Actors;
-using Fenrir.EventBehaviour.Attributes;
 using Fenrir.Managers;
 
 public class ShakeBall : GameActor<GameManager>
 {
     [SerializeField] private GameObject ballPrefab;
-    public GameObject CenterPoint; // Nesnenin etrafında döneceği merkezi nokta
-    public float TurnSpeed = 45f;
+    public GameObject CenterPoint; 
+    [SerializeField]private float TurnSpeed = 45f;
     public List<GameObject> CreatedBalls;
 
     private void Update()
@@ -36,16 +34,7 @@ public class ShakeBall : GameActor<GameManager>
         gameObject.transform.localScale = Vector3.zero;
     }
 
-    [GE(Constants.DESTROYBALLEVENT)]
-    private void DestroyBalls()
-    {
-        foreach (GameObject ball in CreatedBalls)
-        {
-            Debug.Log("calisti");
-            ball.SetActive(false);
-            CreatedBalls.Remove(ball);
-        }
-    }
+
 
     private void OnTriggerEnter(Collider other)
     {

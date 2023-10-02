@@ -35,9 +35,7 @@ public class UIManager : GameActor<GameManager>
 
     void GamePanelLevelTextUpdate()
     {
-        int level = PlayerPrefs.GetInt("level");
-        level++;
-        GamePanel.GetComponent<GamePanel>().LevelText.text = "Level "+level;
+        GamePanel.GetComponent<GamePanel>().LevelText.text = "Level "+PlayerPrefs.GetInt("UILevel");
     }
 
     void AddListeners()

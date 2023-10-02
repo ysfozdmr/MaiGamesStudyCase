@@ -9,30 +9,31 @@ using Fenrir.Managers;
 
 public class PlayerController : GameActor<GameManager>
 {
-    [Header("Movement Settings")] private float _threshold;
-    private int screenWidth;
-    private float thresholdScreenDivider;
-    private float mouseTempX;
+    [Header("Movement Settings")] private float mouseTempX;
     private float horizontalTempPos;
     private float mouseCurrentX;
     private float movementSpeed;
+    private float dragSpeed;
     private float clampMin;
     private float clampMax;
-    
+    Vector3 direction;
+    private Vector3? lastMousePos;
+    private Vector2 diff;
 
+
+    private Rigidbody rb;
 
     public override void ActorAwake()
     {
-        thresholdScreenDivider = DataManager.Instance.GameConfiguration.ThresholdScreenDivider;
-         movementSpeed = DataManager.Instance.GameConfiguration.MovementSpeed;
+        rb = GetComponent<Rigidbody>();
+        movementSpeed = DataManager.Instance.GameConfiguration.MovementSpeed;
+        dragSpeed = DataManager.Instance.GameConfiguration.DragSpeed;
         clampMin = DataManager.Instance.GameConfiguration.MovementClampStart;
         clampMax = DataManager.Instance.GameConfiguration.MovementClampEnd;
     }
 
     public override void ActorStart()
     {
-        screenWidth = Screen.width;
-        _threshold = screenWidth / thresholdScreenDivider;
     }
 
     [GE(Constants.PAUSEPLAYEREVENT)]
@@ -68,31 +69,49 @@ public class PlayerController : GameActor<GameManager>
         }
     }
 
+    
+    private void GetInput()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            lastMousePos = Input.mousePosition;
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            lastMousePos = null;
+            direction = Vector3.zero;
+        }
+
+        if (lastMousePos != null)
+        {
+            diff = (Vector2)Input.mousePosition - (Vector2)lastMousePos;
+
+            lastMousePos = Input.mousePosition;
+            direction = Vector3.Lerp(direction, Vector3.right * diff.x, Time.deltaTime * 5);
+        }
+    }
+
+
+    private void Clamp()
+    {
+        Vector3 newPosition = rb.position;
+        newPosition.x = Mathf.Clamp(newPosition.x, clampMin, clampMax);
+        rb.position = newPosition;
+    }
+
     void Movement()
     {
-        if (Input.GetMouseButtonDown(0)) //Get initial values
+        rb.velocity = Vector3.ClampMagnitude((direction * dragSpeed), 4) + (Vector3.forward * movementSpeed);
+    }
+
+
+    public override void ActorUpdate()
+    {
+        if (GameManager.Instance.runtime.isGameStarted)
         {
-            mouseTempX = (Input.mousePosition.x / Screen.width) * _threshold;
-
-            horizontalTempPos = transform.localPosition.x;
+            Clamp();
+            GetInput();
         }
-
-        if (Input.GetMouseButton(0)) //Compare current values to initial values and determine the position
-        {
-            mouseCurrentX = (Input.mousePosition.x / screenWidth) * _threshold;
-
-            Vector3 pos = transform.localPosition;
-            pos.x = horizontalTempPos + (mouseCurrentX - mouseTempX);
-            transform.localPosition = pos;
-
-            pos = transform.localPosition;
-            pos.x = Mathf.Clamp(pos.x, clampMin, clampMax);
-
-            transform.localPosition = pos;
-        }
-
-
-        transform.position += Vector3.forward * movementSpeed * Time.fixedDeltaTime;
     }
 
     public override void ActorFixedUpdate()
@@ -100,6 +119,10 @@ public class PlayerController : GameActor<GameManager>
         if (GameManager.Instance.runtime.isGameStarted)
         {
             Movement();
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
         }
     }
 }

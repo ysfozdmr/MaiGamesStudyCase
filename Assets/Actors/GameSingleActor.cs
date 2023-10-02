@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Fenrir.Managers;
-
 namespace Fenrir.Actors
 {
     public class GameSingleActor<T> : GameActor<GameManager> where T : MonoBehaviour

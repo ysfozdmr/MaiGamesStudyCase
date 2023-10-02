@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &14561220
 RectTransform:
   m_ObjectHideFlags: 0
@@ -459,8 +459,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0044556, y: -0.0014648}
-  m_SizeDelta: {x: 440.47, y: 550.58}
+  m_AnchoredPosition: {x: -0.0044556, y: 0.00383}
+  m_SizeDelta: {x: 440.47, y: 783.06}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1173380166
 CanvasRenderer:
@@ -2575,7 +2575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf629f868bf95b44ba6cfa32650896fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DoorPassageCounter: 30
+  DoorPassageCounter: 17
   CounterText: {fileID: 3531606798841176554}
   DoorBalls: []
   wall: {fileID: 6346995351359481443}
@@ -3347,7 +3347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf629f868bf95b44ba6cfa32650896fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DoorPassageCounter: 35
+  DoorPassageCounter: 20
   CounterText: {fileID: 6254956257493507770}
   DoorBalls: []
   wall: {fileID: 2301037055316791306}

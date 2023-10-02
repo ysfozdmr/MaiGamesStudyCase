@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f06fe088142fc44869897d1ef15d45, type: 3}
   m_Name: Game Configuration
   m_EditorClassIdentifier: 
-  ThresholdScreenDivider: 400
-  MovementSpeed: 5
-  MovementClampStart: -0.96
-  MovementClampEnd: 1.31
+  MovementSpeed: 3
+  MovementClampStart: -0.9
+  MovementClampEnd: 1.26
+  DragSpeed: 1
